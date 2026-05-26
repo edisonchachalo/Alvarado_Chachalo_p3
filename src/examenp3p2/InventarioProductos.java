@@ -82,7 +82,7 @@ public class InventarioProductos {
     }
 
     //
-    public Producto buscarProNombre (String nombreBuscado) throws Exception{
+    public Producto buscarPorNombre (String nombreBuscado) throws Exception{
         for (Producto prod : productos){
             if (prod.getNombre().equalsIgnoreCase(nombreBuscado)){
                 return prod;

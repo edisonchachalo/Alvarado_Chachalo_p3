@@ -59,12 +59,48 @@ public class Ventana {
             public void actionPerformed(ActionEvent e) {
                 int index = listP1.getSelectedIndex();
                 if (index != -1){
-                    Producto seleccionado = inventario.getProductos.get(index);
+                    Producto seleccionado = inventario.getProductos().get(index);
+                    //seleccionado.setNombre(txtNombreP1.);
                 }
+            }
+        });
+        btnMostrarP1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarListaP1();
             }
         });
     }
 
+    public void mostrarListaP1(){
+        dlmP1.removeAllElements();
+        for (Producto p : inventario.getProductos()){
+            dlmP1.addElement(dlmP1.toString());
+        }
+        listP1.setModel(dlmP1);
+    }
 
+    public void mostrarListaP2(){
+        dlmP1.removeAllElements();
+        for (Producto p : inventario.getProductos()){
+            dlmP2.addElement(dlmP1.toString());
+        }
+        listP1.setModel(dlmP2);
+    }
 
+    private void limpiarCamposP1(){
+        txtIDP1.setText("");
+        txtNombreP1.setText("");
+        cmbCategoriaP1.setSelectedIndex(0);
+        txtCantidadP1.setText("");
+        txtPrecioP1.setText("");
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Ventana");
+        frame.setContentPane(new Ventana().Ventana);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
 }

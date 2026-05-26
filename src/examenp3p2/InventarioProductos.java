@@ -107,4 +107,7 @@ public class InventarioProductos {
 
     }
 
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
 }

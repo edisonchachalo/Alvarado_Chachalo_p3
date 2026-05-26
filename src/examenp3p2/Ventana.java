@@ -70,22 +70,53 @@ public class Ventana {
                 mostrarListaP1();
             }
         });
+        btnOrdenarPrecioP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    inventario.ordenarPorPrecioDesc();
+                } catch (Exception ex) {
+                    mostrarListaP2();
+                }
+                mostrarListaP2();
+            }
+        });
+        btnMostrarP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btnBuscarNombreP2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String nombre = txtNombreP2.getText();
+                    Producto encontrado = inventario.buscarPorNombre(nombre);
+                    dlmP2.removeAllElements();
+                    dlmP2.addElement(encontrado.toString());
+                    listP2.setModel(dlmP2);
+                }catch (Exception ex){
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+            }
+        });
     }
 
     public void mostrarListaP1(){
-        dlmP1.removeAllElements();
+        DefaultListModel dlm = new DefaultListModel();
         for (Producto p : inventario.getProductos()){
-            dlmP1.addElement(dlmP1.toString());
+            dlm.addElement(p.toString());
         }
-        listP1.setModel(dlmP1);
+        listP1.setModel(dlm);
     }
 
     public void mostrarListaP2(){
-        dlmP1.removeAllElements();
+        DefaultListModel dlm = new DefaultListModel();
         for (Producto p : inventario.getProductos()){
-            dlmP2.addElement(dlmP1.toString());
+            dlm.addElement(p.toString());
         }
-        listP1.setModel(dlmP2);
+        listP2.setModel(dlm);
     }
 
     private void limpiarCamposP1(){

@@ -54,13 +54,22 @@ public class Ventana {
         });
 
 
+
+
         btnModificarP1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int index = listP1.getSelectedIndex();
                 if (index != -1){
                     Producto seleccionado = inventario.getProductos().get(index);
-                    //seleccionado.setNombre(txtNombreP1.);
+                    seleccionado.setNombre(txtNombreP1.getText());
+                    seleccionado.setCategoria(cmbCategoriaP1.getSelectedItem().toString());
+                    seleccionado.setCantidad(Integer.parseInt(txtCantidadP1.getText()));
+                    seleccionado.setPrecio(Float.parseFloat(txtPrecioP1.getText()));
+                    mostrarListaP1();
+                    limpiarCamposP1();
+                } else {
+                    JOptionPane.showMessageDialog(null,"Seleccione un producto de la lista para modificar");
                 }
             }
         });
@@ -84,6 +93,7 @@ public class Ventana {
         btnMostrarP2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                mostrarListaP2();
 
             }
         });
@@ -126,6 +136,8 @@ public class Ventana {
         txtCantidadP1.setText("");
         txtPrecioP1.setText("");
     }
+
+    //list
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Ventana");
